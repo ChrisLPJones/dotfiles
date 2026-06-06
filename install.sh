@@ -51,7 +51,7 @@ fi
 if [ ! -d ~/.fzf ]; then
     set -e
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install --no-update-rc
+    ~/.fzf/install --no-update-rc -all
     set +e
 fi
 

@@ -114,19 +114,24 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export FZF_DEFAULT_OPTS='--exact --height=100%'
 export FZF_CTRL_R_OPTS='--reverse'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# Pearl/Go Paths
-PATH="$HOME/.local/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="$HOME/.local/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="$HOME/.local/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"$HOME/.local/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=$HOME/.local/perl5"; export PERL_MM_OPT;
+
+# Pearl Paths
+#PATH="$HOME/.local/perl5/bin${PATH:+:${PATH}}"; export PATH;
+#PERL5LIB="$HOME/.local/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+#PERL_LOCAL_LIB_ROOT="$HOME/.local/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+#PERL_MB_OPT="--install_base \"$HOME/.local/perl5\""; export PERL_MB_OPT;
+#PERL_MM_OPT="INSTALL_BASE=$HOME/.local/perl5"; export PERL_MM_OPT;
+#eval "$(perl -I$HOME/.local/lib/perl5 -Mlocal::lib=$HOME/.local)"
+
+# Go Path
 export GOPATH="$HOME/.local/share/go"
 export PATH="$HOME/.local/bin:$GOPATH/bin:$PATH"
-eval "$(perl -I$HOME/.local/lib/perl5 -Mlocal::lib=$HOME/.local)"
+
+# Oracle Path
 export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_4:$LD_LIBRARY_PATH
 export PATH=$LD_LIBRARY_PATH:$PATH
 
 
 # Ruby
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
