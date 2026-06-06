@@ -7,8 +7,9 @@ sudo apt install -y \
     curl wget zsh tmux git alacritty grc wl-clipboard xclip ripgrep stow unzip fontconfig \
     python3-pip python3-venv python3-pynvim command-not-found gpg
 
-sudo locale-gen "en_US.UTF-8"
-sudo dpkg-reconfigure --frontend=noninteractive locales
+sudo sed -i 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+sudo locale-gen
+sudo update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
 nvim_version=$(nvim --version 2>/dev/null | head -1 | grep -oP '\d+\.\d+\.\d+' || echo "0.0.0")
 if [ "$nvim_version" != "0.12.2" ]; then
@@ -57,9 +58,11 @@ fi
 if ! command -v starship &>/dev/null; then
     set -e
     curl -sS https://starship.rs/install.sh | sh -s -- --yes
-    sudo chsh -s "$(which zsh)" "$USER"
     set +e
 fi
+
+sudo chsh -s "$(which zsh)" "$USER"
+
 
 if ! command -v eza &>/dev/null; then
     set -e
