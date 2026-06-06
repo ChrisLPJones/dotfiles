@@ -120,5 +120,10 @@ if [ ! -d ~/.tmux/plugins/tpm ]; then
     sed -i 's/@thm_overlay_2 "[^"]*"/@thm_overlay_2 "#4d6174"/' ~/.tmux/plugins/tmux/themes/catppuccin_mocha_tmux.conf
     sed -i 's/@thm_surface_0 "[^"]*"/@thm_surface_0 "#45475a"/' ~/.tmux/plugins/tmux/themes/catppuccin_mocha_tmux.conf
     sed -i 's/@thm_mantle "[^"]*"/@thm_mantle "#1c1c1f"/' ~/.tmux/plugins/tmux/themes/catppuccin_mocha_tmux.conf
+    sed -i "s/'C-h'/'M-Left'/" ~/.tmux/plugins/vim-tmux-navigator/vim-tmux-navigator.tmux
+    sed -i "s/'C-l'/'M-Right'/" ~/.tmux/plugins/vim-tmux-navigator/vim-tmux-navigator.tmux
+    sed -i "s/'C-k'/'M-Up'/" ~/.tmux/plugins/vim-tmux-navigator/vim-tmux-navigator.tmux
+    sed -i "s/'C-j'/'M-Down'/" ~/.tmux/plugins/vim-tmux-navigator/vim-tmux-navigator.tmux
+    sed -i "s/'C-\\\\'/'M-\\\\'/" ~/.tmux/plugins/vim-tmux-navigator/vim-tmux-navigator.tmux
     set +e
 fi
