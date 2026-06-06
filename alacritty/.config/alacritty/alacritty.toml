@@ -1,0 +1,61 @@
+[terminal.shell]
+program = "tmux"
+
+[colors.cursor]
+text = "#1e1e2e"
+cursor = "#f5e0dc"
+
+[window]
+decorations = "none"
+padding = { x = 10, y = 10 }
+opacity = 1
+dimensions = { columns = 130, lines = 35 }
+
+[env]
+TERM = "xterm-256color"
+
+[selection]
+save_to_clipboard = true
+
+[scrolling]
+history = 50000
+multiplier = 3
+
+[cursor]
+blink_interval = 500
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "On"
+shape = "Block"
+
+[hints]
+enabled = [
+    { regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\\u0000-\\u001F\\u007F-\\u009F<>\"\\\\s{-}\\\\^\\u2060]+", hyperlinks = true, command = "xdg-open", post_processing = true, persist = false, mouse = { enabled = true, mods = "Control" }, binding = { key = "U", mods = "Control|Shift" } }
+]
+
+[font]
+size = 14.0
+
+[font.bold]
+family = "CaskaydiaCove Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "CaskaydiaCove Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "CaskaydiaCove Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "CaskaydiaCove Nerd Font"
+style = "Regular"
+
+[general]
+
+live_config_reload = true
+import = [
+	"~/.config/alacritty/themes/themes/kanagawa_wave.toml"
+]
