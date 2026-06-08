@@ -1,11 +1,14 @@
 #!/bin/bash
 
-DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y \
     curl wget zsh tmux git alacritty grc wl-clipboard xclip ripgrep stow unzip fontconfig \
     python3-pip python3-venv python3-pynvim command-not-found gpg
+
+git clone https://github.com/ChrisLPJones/dotfiles.git "$HOME/dotfiles"
+
+DOTFILES_DIR="$HOME/dotfiles"
 
 sudo sed -i 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 sudo locale-gen
@@ -28,11 +31,12 @@ if ! command -v tree-sitter &>/dev/null; then
     set -e
     ts_platform="x64"
     [ "$(uname -m)" = "aarch64" ] && ts_platform="arm64"
-    curl -L "https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-${ts_platform}.gz" \
-        -o /tmp/tree-sitter.gz
-    gunzip /tmp/tree-sitter.gz
-    sudo mv /tmp/tree-sitter /usr/local/bin/tree-sitter
+    curl -L "https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-cli-linux-${ts_platform}.zip" \
+        -o /tmp/tree-sitter.zip
+    unzip -o /tmp/tree-sitter.zip tree-sitter -d /tmp/tree-sitter-bin
+    sudo mv /tmp/tree-sitter-bin/tree-sitter /usr/local/bin/tree-sitter
     sudo chmod +x /usr/local/bin/tree-sitter
+    rm -rf /tmp/tree-sitter.zip /tmp/tree-sitter-bin
     set +e
 fi
 
