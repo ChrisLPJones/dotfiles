@@ -31,8 +31,8 @@ if ! command -v tree-sitter &>/dev/null; then
     set -e
     ts_platform="x64"
     [ "$(uname -m)" = "aarch64" ] && ts_platform="arm64"
-    curl -L "https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-cli-linux-${ts_platform}.zip" \
-        -o /tmp/tree-sitter.zip
+    wget -q "https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-cli-linux-${ts_platform}.zip" \
+        -O /tmp/tree-sitter.zip
     unzip -o /tmp/tree-sitter.zip tree-sitter -d /tmp/tree-sitter-bin
     sudo mv /tmp/tree-sitter-bin/tree-sitter /usr/local/bin/tree-sitter
     sudo chmod +x /usr/local/bin/tree-sitter
