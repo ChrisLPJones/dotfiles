@@ -2,9 +2,11 @@
 
 
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y \
-    curl wget zsh tmux git alacritty grc wl-clipboard xclip ripgrep stow unzip fontconfig \
-    python3-pip python3-venv python3-pynvim command-not-found gpg
+for pkg in curl wget zsh tmux git alacritty grc wl-clipboard xclip \
+    ripgrep stow unzip fontconfig python3-pip python3-venv \
+    python3-pynvim command-not-found gpg; do
+    sudo apt install -y "$pkg" || echo "FAILED: $pkg"
+done
 
 git clone https://github.com/ChrisLPJones/dotfiles.git "$HOME/dotfiles"
 
