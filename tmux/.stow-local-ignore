@@ -1,0 +1,3 @@
+\.stow-local-ignore
+(cpu|gpu|ram|net_primary|net_vpn)\.conf
+scripts

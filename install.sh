@@ -114,18 +114,6 @@ if [ ! -d ~/.tmux/plugins/tpm ]; then
     set -e
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     ~/.tmux/plugins/tpm/bin/install_plugins
-    sed -i 's/@thm_maroon}\"/@thm_mauve}"/' ~/.tmux/plugins/tmux/status/application.conf
-    sed -i 's/@thm_rosewater}\"/@thm_mauve}"/' ~/.tmux/plugins/tmux/status/directory.conf
-    sed -i 's/@thm_green}/@thm_mauve}/' ~/.tmux/plugins/tmux/status/session.conf
-    sed -i 's/@thm_sky\"/@thm_mauve"/' ~/.tmux/plugins/tmux/status/user.conf
-    sed -i 's/@thm_bg "#[^"]*"/@thm_bg "#1c1c1f"/' ~/.tmux/plugins/tmux/themes/catppuccin_mocha_tmux.conf
-    sed -i 's/@thm_mauve "[^"]*"/@thm_mauve "#81A1C1"/' ~/.tmux/plugins/tmux/themes/catppuccin_mocha_tmux.conf
-    sed -i 's/@thm_maroon "[^"]*"/@thm_maroon "#81A1C1"/' ~/.tmux/plugins/tmux/themes/catppuccin_mocha_tmux.conf
-    sed -i 's/@thm_sapphire "[^"]*"/@thm_sapphire "#1c1c1f"/' ~/.tmux/plugins/tmux/themes/catppuccin_mocha_tmux.conf
-    sed -i 's/@thm_lavender "[^"]*"/@thm_lavender "#81A1C1"/' ~/.tmux/plugins/tmux/themes/catppuccin_mocha_tmux.conf
-    sed -i 's/@thm_overlay_2 "[^"]*"/@thm_overlay_2 "#4d6174"/' ~/.tmux/plugins/tmux/themes/catppuccin_mocha_tmux.conf
-    sed -i 's/@thm_surface_0 "[^"]*"/@thm_surface_0 "#45475a"/' ~/.tmux/plugins/tmux/themes/catppuccin_mocha_tmux.conf
-    sed -i 's/@thm_mantle "[^"]*"/@thm_mantle "#1c1c1f"/' ~/.tmux/plugins/tmux/themes/catppuccin_mocha_tmux.conf
     sed -i "s/'C-h'/'M-Left'/" ~/.tmux/plugins/vim-tmux-navigator/vim-tmux-navigator.tmux
     sed -i "s/'C-l'/'M-Right'/" ~/.tmux/plugins/vim-tmux-navigator/vim-tmux-navigator.tmux
     sed -i "s/'C-k'/'M-Up'/" ~/.tmux/plugins/vim-tmux-navigator/vim-tmux-navigator.tmux
