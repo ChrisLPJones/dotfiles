@@ -3,7 +3,7 @@
 
 sudo apt update && sudo apt upgrade -y
 for pkg in curl wget zsh tmux git alacritty grc wl-clipboard xclip \
-    ripgrep stow unzip fontconfig python3-pip python3-venv \
+    ripgrep fd-find stow unzip fontconfig python3-pip python3-venv \
     python3-pynvim command-not-found gpg; do
     sudo apt install -y "$pkg" || echo "FAILED: $pkg"
 done

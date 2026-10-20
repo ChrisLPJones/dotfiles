@@ -26,6 +26,10 @@ return {
 				},
 			},
 			files = {
+				-- Include hidden and gitignored files, but skip .git and node_modules
+				-- (fd is used when installed, otherwise rg)
+				fd_opts = "--color=never --type f --type l --hidden --no-ignore --exclude .git --exclude node_modules",
+				rg_opts = '--color=never --files --hidden --no-ignore -g "!.git" -g "!node_modules"',
 				fzf_opts = {
 					["--exact"] = "",
 					["--no-sort"] = "",
@@ -64,5 +68,9 @@ return {
 			end,
 		})
 		fzf.register_ui_select()
+
+		vim.keymap.set("n", "<M-f>", fzf.files, { desc = "Find files" })
+		vim.keymap.set("n", "<M-b>", fzf.buffers, { desc = "Buffers (ctrl-x to delete)" })
+		vim.keymap.set("n", "<M-g>", fzf.live_grep, { desc = "Live grep" })
 	end,
 }

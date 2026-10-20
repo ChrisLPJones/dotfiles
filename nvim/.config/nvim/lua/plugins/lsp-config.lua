@@ -2,9 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		"williamboman/mason.nvim",
-		"nvim-telescope/telescope.nvim",
-		"nvim-telescope/telescope-ui-select.nvim",
-		"ibhagwan/fzf-lua", -- Add this if not already there
+		"ibhagwan/fzf-lua",
 		{
 			"seblyng/roslyn.nvim",
 			commit = "f2ec6ee",
@@ -14,11 +12,6 @@ return {
 		},
 	},
 	config = function()
-		--------------------------------------------------------
-		-- Faster CursorHold (diagnostics popup)
-		--------------------------------------------------------
-		vim.o.updatetime = 300
-		local util = require("lspconfig.util")
 		--------------------------------------------------------
 		-- Capabilities (nvim-cmp support)
 		--------------------------------------------------------
@@ -94,7 +87,9 @@ return {
 					runtime = { version = "LuaJIT" },
 					diagnostics = { globals = { "vim" } },
 					workspace = {
-						library = vim.api.nvim_get_runtime_file("", true),
+						-- Only index the Neovim runtime; indexing every plugin
+						-- on the runtimepath makes lua_ls slow to start.
+						library = { vim.env.VIMRUNTIME },
 						checkThirdParty = false,
 					},
 					format = {
@@ -155,7 +150,9 @@ return {
 				"typescript",
 				"typescriptreact",
 			},
-			root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", "package.json"),
+			-- vim.lsp.config's root_dir takes (bufnr, on_dir), not a path, so
+			-- use root_markers instead of lspconfig.util.root_pattern.
+			root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
 		})
 		--------------------------------------------------------
 		-- Python
@@ -181,7 +178,7 @@ return {
 			on_attach = on_attach,
 			capabilities = capabilities,
 			filetypes = { "html" },
-			root_dir = util.root_pattern("package.json", ".git", "index.html"),
+			root_markers = { "package.json", ".git", "index.html" },
 			settings = {
 				html = {
 					format = {

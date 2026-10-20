@@ -39,7 +39,7 @@ vim.opt.smartcase = true
 vim.opt.wildignore:append({ "*/node_modules/*" })
 vim.opt.path:append({ "**" })
 vim.opt.signcolumn = "yes"
-vim.api.nvim_set_keymap("n", "<leader>tb", ":botright split | term<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>tt", "<Cmd>botright split | term<CR>", { desc = "Terminal split", silent = true })
 vim.keymap.set({ "n", "v" }, "y", '"+y', { noremap = true, silent = true })
 vim.keymap.set("n", "Y", '"+Y', { noremap = true, silent = true })
 
@@ -89,11 +89,3 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
-
--- Mason registry setup (after lazy is loaded)
-require("mason").setup({
-	registries = {
-		"github:mason-org/mason-registry",
-		"github:Crashdummyy/mason-registry",
-	},
-})

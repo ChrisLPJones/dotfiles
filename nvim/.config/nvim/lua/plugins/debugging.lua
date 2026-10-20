@@ -18,7 +18,7 @@ return {
 			local dapui = require("dapui")
 
 			------------------------------------------------------
-			-- Mason DAP setup (Mason itself is configured in init.lua)
+			-- Mason DAP setup (Mason itself is configured in plugins/mason.lua)
 			------------------------------------------------------
 			require("mason-nvim-dap").setup({
 				ensure_installed       = { "codelldb", "netcoredbg", "debugpy" },
@@ -45,7 +45,7 @@ return {
 			local mason_path    = vim.fn.stdpath("data") .. "/mason/packages/codelldb"
 			local adapter_path  = mason_path .. "/extension/adapter/codelldb"
 			local liblldb_path  = mason_path .. "/extension/lldb/lib/liblldb.so"
-			local sysname       = vim.loop.os_uname().sysname
+			local sysname       = vim.uv.os_uname().sysname
 
 			if sysname == "Darwin" then
 				liblldb_path = mason_path .. "/extension/lldb/lib/liblldb.dylib"
