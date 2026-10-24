@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# Primary interface (one used for default route)
-primary=$(ip route get 8.8.8.8 2>/dev/null | awk '/dev/ {for(i=1;i<=NF;i++) if($i=="dev") print $(i+1)}')
+# Primary interface (default route device, skipping VPN tunnels - a full-tunnel
+# VPN takes over the default route and would otherwise be reported as primary)
+primary=$(ip -4 route show default 2>/dev/null | awk '{for(i=1;i<=NF;i++) if($i=="dev") print $(i+1)}' | grep -vE '^(tun|wg)[0-9]' | head -1)
 primary_ip=$(ip -4 addr show "$primary" 2>/dev/null | awk '/inet / {print $2}' | cut -d/ -f1 | head -1)
 
 parts=()
